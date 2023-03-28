@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Favorite Clothing</string>
+    <string name="h_and_m">H&amp;M</string>
+    <string name="new_yorker">New Yorker</string>
+    <string name="dior">Dior</string>
+    <string name="pull_and_bear">Pull&amp;Bear</string>
+    <string name="shoes">Shoes</string>
+    <string name="jacket">Jacket</string>
+    <string name="t_shirt">T-Shirt</string>
+    <string name="pants">Pants</string>
+    <string name="accessory">Accessory</string>
+    <string name="underwear">Underwear</string>
+    <string name="hoodie">Hoodie</string>
+    <string name="sweater">Sweater</string>
+</resources>
