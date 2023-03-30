@@ -10,15 +10,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cute_white_bear.favoriteclothing.data.Datasource
@@ -48,9 +46,10 @@ fun FavoriteClothingList(
     modifier: Modifier = Modifier
 ) {
     LazyHorizontalGrid(
-        rows = GridCells.Fixed(1),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier.height(350.dp),
+        rows = GridCells.Fixed(2),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        modifier = modifier.height(700.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(favoriteList) { favorite -> 
             FavoriteCard(favorite)
@@ -63,25 +62,49 @@ fun FavoriteCard(
     clothing: Clothing,
     modifier: Modifier = Modifier
 ) {
-    Card(
-        elevation = 4.dp,
-        shape = RoundedCornerShape(10.dp),
-    ) {
-        Column {
+    Card(elevation = 4.dp) {
+        Box {
             Image(
                 painter = painterResource(clothing.image),
                 contentDescription = stringResource(clothing.type),
+            )
+            Text(
+                text = "$${clothing.price}",
+                modifier = modifier
+                    .padding(top = 16.dp, bottom = 4.dp)
+                    .align(Alignment.BottomCenter),
+                fontFamily = openSans,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
             )
         }
     }
 }
 
-@Preview(showSystemUi = true)
+/**
+ * Used for preview UI
+ */
+
+//@Preview
+//@Composable
+//fun FavoriteClothingDarkThemePreview() {
+//    FavoriteClothingTheme(darkTheme = true) {
+//        FavoriteClothingUI()
+//    }
+//}
+//
+//@Preview
+//@Composable
+//fun FavoriteClothingPreview() {
+//    FavoriteClothingTheme(darkTheme = false) {
+//        FavoriteClothingUI()
+//    }
+//}
+
 @Composable
 fun FavoriteClothingUI() {
     Column(
-        Modifier
-            .padding(8.dp),
+        Modifier.padding(8.dp),
     ) {
         Image(
             painter = painterResource(R.drawable.h_and_m_logo),
@@ -124,10 +147,9 @@ private fun FavoriteCategory(
 ) {
     Text(
         text = stringResource(category),
-        color = Color(0xFF121212),
         fontSize = 30.sp,
         fontWeight = FontWeight.Medium,
-        modifier = Modifier.padding(start = 6.dp, bottom = 8.dp),
+        modifier = modifier.padding(start = 6.dp, bottom = 8.dp),
         fontFamily = openSans
     )
 }
